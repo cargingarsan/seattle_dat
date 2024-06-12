@@ -127,6 +127,7 @@ query1 <- seattle_pq |>
   collect() |>
   slice(1)
 
+#libro mas vendido de cada año
 query1 <- seattle_pq |> 
   filter(CheckoutYear >= 2020, MaterialType == "BOOK") |>
   group_by(CheckoutYear, Title) |>
@@ -135,6 +136,7 @@ query1 <- seattle_pq |>
   collect() |>
   slice(1)
 
+#Titulo mas vendido cada año
 query2 <- seattle_pq |> 
   filter(CheckoutYear > 2005, MaterialType =="BOOK") |>
   group_by(CheckoutYear, Title) |>
@@ -143,19 +145,21 @@ query2 <- seattle_pq |>
   collect() |>
   slice(1)
 
-
+#artista mas leido en libreria de seattle
 query3 <- seattle_pq |> 
-  filter(CheckoutYear > 2005, MaterialType =="BOOK") |>
+  filter(CheckoutYear >= 2005, MaterialType =="BOOK") |>
   group_by(CheckoutYear, Creator) |>
   summarize(TotalCheckouts = sum(Checkouts)) |>
-  arrange(desc(TotalCheckouts)) |>
+  arrange(desc( TotalCheckouts)) |>
   collect() |>
   slice(1)
 
 
 
-
-
+  
+  
+  
+  
 
 
 
